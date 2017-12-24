@@ -28,7 +28,7 @@
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
-                                <table id="example1" class="table table-bordered table-striped">
+                                <table id="penjualanTable" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -65,7 +65,7 @@
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
-                                <table id="example1" class="table table-bordered table-striped">
+                                <table id="pengeluaranTable" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -112,6 +112,7 @@
                     <div class="box-footer">
 
                         <button type="submit" id="print"  class="btn btn-default pull-right"> <a href="javascript:window.print();">PRINT</a></button>
+                    <button class="btn btn-default"><a href="<?php echo base_url();?>petugas/Laporan/laporanPenjualanBulananExcel/">SIMPAN LAPORAN PENJUALAN</a></button>
                     </div>
                     <!-- /.box-body -->
                 </div>

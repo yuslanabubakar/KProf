@@ -64,6 +64,14 @@ class Laporan extends CI_Controller {
 
         $this->load->view("template/petugas_view", $data);
     }
+
+    public function laporanPenjualanBulananExcel() {
+        $bulan = $this->input->post('bulan');
+        $content['data'] = $this->PenjualanModel->search_bulan($bulan);
+        $content['tanga'] = $bulan;
+        $this->load->view("petugas/laporanPenjualanBulananExcel",$content);
+    }
+
      function PrintD($bulan) {
         
         $content['data'] = $this->PenjualanModel->search_bulan($bulan);
