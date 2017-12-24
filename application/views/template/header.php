@@ -150,6 +150,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="treeview-menu">
                                 <li class="active"><a href="<?php echo base_url(); ?>petugas/Penjualan"><i class="fa fa-circle-o"></i> Penjualan</a></li>
+                                <li class="active"><a href="<?php echo base_url(); ?>petugas/Pengeluaran"><i class="fa fa-circle-o"></i> Pengeluaran</a></li>
                             </ul>
                         </li>
                         <li class="treeview">

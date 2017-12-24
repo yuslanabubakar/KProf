@@ -17,6 +17,7 @@ class LaporanPerhari extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->model('PengeluaranModel');
     }
 
     public function index() {
@@ -49,6 +50,7 @@ class LaporanPerhari extends CI_Controller {
     public function cariTanggal() {
         $hari = $this->input->post('hari');
         $content['data'] = $this->PenjualanModel->search_hari($hari);
+        $content['dataPengeluaran'] = $this->PengeluaranModel->search_hari_pengeluaran($hari);
         $content['tanga'] = $hari;
         $jabatan = ($this->session->userdata['logged_in']['jabatan']);
             if ($jabatan == 'admin') {

@@ -17,6 +17,7 @@ class Laporan extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->model('PengeluaranModel');
     }
 
     public function index() {
@@ -49,6 +50,7 @@ class Laporan extends CI_Controller {
     public function cariTanggal() {
         $bulan = $this->input->post('bulan');
         $content['data'] = $this->PenjualanModel->search_bulan($bulan);
+        $content['dataPengeluaran'] = $this->PengeluaranModel->search_bulan_pengeluaran($bulan);
         $content['tanga'] = $bulan;
         $jabatan = ($this->session->userdata['logged_in']['jabatan']);
             if ($jabatan == 'admin') {
