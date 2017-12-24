@@ -50,8 +50,8 @@
                                                 <td><?php echo $as->namaBarang; ?></td>
                                                 <td><?php echo $as->quantity; ?></td>
                                                 <td><?php echo $as->harga; ?></td>
-                                                <td><?php echo $as->diskon*$as->quantity; ?></td>
-                                                <td><?php echo $total = ($as->harga * $as->quantity)-($as->diskon*$as->quantity); ?></td>
+                                                <td><?php echo $as->diskon; ?></td>
+                                                <td><?php echo $total = ($as->harga * $as->quantity)-($as->diskon); ?></td>
                                             </tr>
 
                                             <?php

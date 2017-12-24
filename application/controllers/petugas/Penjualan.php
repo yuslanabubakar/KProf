@@ -150,7 +150,7 @@ class Penjualan extends CI_Controller {
                     'idTransaksi' => "TRS" . $idT[0]->ind,
                     'idBarang' => $brg[0]->idBarang,
                     'jumlah' => $dataPesan[$i],
-                    'diskon' => $dataDiskon[$i]
+                    'diskon' => $dataDiskon[$i]*$dataPesan[$i]
                 );
                 $this->PenjualanModel->insert('detailtransaksi', $dataD);
             }
