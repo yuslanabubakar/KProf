@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 22 Des 2017 pada 15.06
--- Versi Server: 5.6.21
+-- Generation Time: Dec 26, 2017 at 08:11 AM
+-- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barang`
+-- Table structure for table `barang`
 --
 
 CREATE TABLE IF NOT EXISTS `barang` (
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `barang` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `barang`
+-- Dumping data for table `barang`
 --
 
 INSERT INTO `barang` (`idBarang`, `namaBarang`, `idJenis`, `harga`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `barang` (`idBarang`, `namaBarang`, `idJenis`, `harga`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detailtransaksi`
+-- Table structure for table `detailtransaksi`
 --
 
 CREATE TABLE IF NOT EXISTS `detailtransaksi` (
@@ -56,23 +56,27 @@ CREATE TABLE IF NOT EXISTS `detailtransaksi` (
   `idBarang` varchar(10) NOT NULL,
   `jumlah` int(10) NOT NULL,
   `diskon` int(20) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=70 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `detailtransaksi`
+-- Dumping data for table `detailtransaksi`
 --
 
 INSERT INTO `detailtransaksi` (`no`, `idTransaksi`, `idBarang`, `jumlah`, `diskon`) VALUES
-(53, 'TRS46', 'MN0003', 1, 0),
-(52, 'TRS46', 'MN0002', 1, 0),
-(51, 'TRS45', 'MN0002', 3, 15000),
-(50, 'TRS44', 'MN0002', 3, 15000),
-(49, 'TRS', 'MN0002', 2, 5000);
+(69, 'TRS51', 'MN0004', 4, 12000),
+(68, 'TRS50', 'MN0005', 3, 0),
+(67, 'TRS50', 'MN0004', 1, 0),
+(66, 'TRS50', 'MN0003', 1, 5000),
+(65, 'TRS50', 'MN0002', 1, 0),
+(64, 'TRS', 'MN0006', 4, 0),
+(63, 'TRS', 'MN0004', 3, 9000),
+(62, 'TRS', 'MN0003', 1, 0),
+(61, 'TRS', 'MN0002', 2, 5000);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenis`
+-- Table structure for table `jenis`
 --
 
 CREATE TABLE IF NOT EXISTS `jenis` (
@@ -81,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `jenis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `jenis`
+-- Dumping data for table `jenis`
 --
 
 INSERT INTO `jenis` (`idJenis`, `namaJenis`) VALUES
@@ -91,7 +95,7 @@ INSERT INTO `jenis` (`idJenis`, `namaJenis`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `karyawan`
+-- Table structure for table `karyawan`
 --
 
 CREATE TABLE IF NOT EXISTS `karyawan` (
@@ -105,16 +109,17 @@ CREATE TABLE IF NOT EXISTS `karyawan` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `karyawan`
+-- Dumping data for table `karyawan`
 --
 
 INSERT INTO `karyawan` (`idKaryawan`, `nama`, `alamat`, `noTlp`, `jabatan`, `username`, `password`) VALUES
-('KR001', 'Admin Coffee', 'BMAN COFFEE SHOP', '', 'admin', 'admin', 'admin');
+('KR001', 'Admin Coffee', 'BMAN COFFEE SHOP', '', 'admin', 'admin', 'admin'),
+('KR002', 'Petugas Coffee', 'BMAN COFFEE SHOP', '', 'petugas', 'petugas', 'petugas');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pelanggan`
+-- Table structure for table `pelanggan`
 --
 
 CREATE TABLE IF NOT EXISTS `pelanggan` (
@@ -126,7 +131,30 @@ CREATE TABLE IF NOT EXISTS `pelanggan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `supplier`
+-- Table structure for table `pengeluaran`
+--
+
+CREATE TABLE IF NOT EXISTS `pengeluaran` (
+  `tanggal` date NOT NULL,
+  `namaBarang` varchar(100) NOT NULL,
+  `harga` int(10) NOT NULL,
+  `jumlah` int(10) NOT NULL,
+  `totalHarga` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pengeluaran`
+--
+
+INSERT INTO `pengeluaran` (`tanggal`, `namaBarang`, `harga`, `jumlah`, `totalHarga`) VALUES
+('2017-12-24', 'susu coklat', 10000, 2, 20000),
+('2017-12-24', 'susu coklat', 12000, 3, 36000),
+('2017-12-24', 'susu coklat', 10000, 1, 10000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `supplier`
 --
 
 CREATE TABLE IF NOT EXISTS `supplier` (
@@ -139,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `supplier` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi`
+-- Table structure for table `transaksi`
 --
 
 CREATE TABLE IF NOT EXISTS `transaksi` (
@@ -147,17 +175,16 @@ CREATE TABLE IF NOT EXISTS `transaksi` (
   `idTransaksi` varchar(10) NOT NULL,
   `tglTransaksi` date NOT NULL,
   `total` int(100) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `transaksi`
+-- Dumping data for table `transaksi`
 --
 
 INSERT INTO `transaksi` (`ind`, `idTransaksi`, `tglTransaksi`, `total`) VALUES
-(47, 'TRS46', '2017-12-22', 38000),
-(46, 'TRS45', '2017-12-22', 51000),
-(45, 'TRS44', '2017-12-22', 51000),
-(44, 'TRS', '2017-12-22', 55000);
+(52, 'TRS51', '2017-12-24', 60000),
+(51, 'TRS50', '2017-12-24', 119000),
+(50, 'TRS', '2017-12-24', 202000);
 
 --
 -- Indexes for dumped tables
@@ -213,12 +240,12 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `detailtransaksi`
 --
 ALTER TABLE `detailtransaksi`
-MODIFY `no` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
+MODIFY `no` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=70;
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-MODIFY `ind` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
+MODIFY `ind` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
