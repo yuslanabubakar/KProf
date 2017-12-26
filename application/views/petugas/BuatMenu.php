@@ -31,8 +31,8 @@
                             <div class="form-group">
                                 <div class="col-md-4">
                                     <label style="margin-top:6px" class="pull-left">ID Menu</label>
-                                    <div style="padding-left:20px" class="col-md-4">
-                                        <input type="text" name="idMenu" id="idMenu" type="text" class="form-control" placeholder="ID Menu" >
+                                    <div style="padding-left:20px" class="col-md-5">
+                                        <input readonly type="text" name="idMenu" id="idMenu" class="form-control" value="<?php echo $lastIdMenu; ?>">
                                         <span style="color:red;"><?php echo form_error('idMenu'); ?></span>
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@
                                 <div class="col-md-4">
                                     <label style="margin-top:6px" class="pull-left">Nama</label>
                                     <div style="padding-left:37px" class="col-md-8">
-                                        <input type="text" name="namaMenu" id="namaMenu" type="text"class="form-control" placeholder="Nama Menu">
+                                        <input type="text" name="namaMenu" id="namaMenu" type="text" class="form-control" placeholder="Nama Menu">
                                         <span style="color:red;"><?php echo form_error('namaMenu'); ?></span>
                                     </div>
                                 </div>

@@ -42,6 +42,7 @@ class Menu extends CI_Controller {
         $table = 'barang';
         $where = array('idBarang' => $this->session->userdata('idBarang'));
         $content['jenis'] = $this->MenuModel->getAll('jenis');
+        $content['lastIdMenu'] = $this->MenuModel->getLastIdMenu();
         $content['total_rowJ'] = $this->MenuModel->countAll('jenis');
         $content['data'] = $this->MenuModel->getOne($table, $where);
         $content['message'] = "Silahkan Tambahkan Menu dibawah ini!";

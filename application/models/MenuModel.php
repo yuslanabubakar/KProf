@@ -33,6 +33,30 @@ class MenuModel extends CI_Model{
     function getMenu() {
         return $this->db->query("SELECT * FROM barang INNER JOIN jenis USING(idJenis) ")->result();
     }
+
+    function getLastIdMenu()
+    {
+        $lastId = $this->db->query("SELECT * FROM barang ORDER BY idBarang DESC LIMIT 1")->row_array();
+        $lastId = $lastId['idBarang'];
+
+        //ref https://stackoverflow.com/questions/8529656/how-do-i-convert-a-string-to-a-number-in-php
+        preg_match("/(\D+)(\d+)/", $lastId, $Matches); // Matches the PU and number
+
+        $ProductCode = $Matches[1];
+
+        $NewID = intval($Matches[2]);
+        $NewID++;
+
+
+        $BarcodeLength = 4;
+        $CurrentLength = strlen($NewID);
+        $MissingZeros = $BarcodeLength - $CurrentLength;
+
+        for ($i=0; $i<$MissingZeros; $i++) $NewID = "0" . $NewID;
+
+        $Result = $ProductCode . $NewID;
+        return $Result;
+    }
     function getMenuW($id) {
         $s= $this->db->query("SELECT * FROM barang INNER JOIN jenis USING(idJenis) where idBarang='$id'")->result();
         return $s;
